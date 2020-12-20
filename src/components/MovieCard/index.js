@@ -1,13 +1,13 @@
 import React from "react";
 import { View, Text, StyleSheet, ImageBackground } from "react-native";
 
-const MovieCard = ({ title }) => {
+const MovieCard = ({ title, poster }) => {
   return (
     <View style={styles.cardWrapper}>
       <View style={styles.cardImg}>
         <ImageBackground
           style={{ width: "100%", height: "100%" }}
-          source={require("../../assets/img/tenet.jpg")}
+          source={{ uri: poster }}
         />
       </View>
       <View style={styles.cardDetail}>

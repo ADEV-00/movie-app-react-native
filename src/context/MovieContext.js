@@ -15,8 +15,8 @@ const getImagePath = (path) => {
 };
 
 const fetchMovies = (dispatch) => async () => {
-  const { ress } = await trackerApi.get();
-  const movies = ress.map(
+  const results = await trackerApi.get();
+  const movies = results.map(
     ({
       id,
       original_title,

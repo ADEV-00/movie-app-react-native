@@ -9,10 +9,22 @@ import {
   ImageBackground,
 } from "react-native";
 import MovieCard from "../../components/MovieCard";
+import { getMovies } from "../../api/api";
+import { FlatList } from "react-native-gesture-handler";
 
 const { width, height } = Dimensions.get("window");
 
 const HomeScreen = () => {
+  const [movies, setMovies] = React.useState();
+
+  React.useEffect(() => {
+    const fetchData = async () => {
+      const movies = await getMovies();
+      setMovies(movies);
+    };
+
+    fetchData(movies);
+  }, [movies]);
   return (
     <>
       <View
@@ -28,7 +40,16 @@ const HomeScreen = () => {
             <Text style={{ fontSize: 15, color: "#FECA32" }}>See All </Text>
           </TouchableOpacity>
         </View>
-        <MovieCard title="Tenet" />
+        <FlatList
+          data={movies}
+          keyExtractor={(item) => item.key}
+          horizontal
+          snapToInterval={width / 2}
+          showsHorizontalScrollIndicator={false}
+          renderItem={({ item, index }) => {
+            return <MovieCard title={item.title} poster={item.poster} />;
+          }}
+        />
       </View>
     </>
   );
