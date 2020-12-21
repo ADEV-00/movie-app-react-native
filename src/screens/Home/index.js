@@ -11,8 +11,11 @@ import {
 import MovieCard from "../../components/MovieCard";
 import { getMovies } from "../../api/api";
 import { FlatList } from "react-native-gesture-handler";
+import PromoCard from "../../components/PromoCard";
 
 const { width, height } = Dimensions.get("window");
+
+const snap = width - 164;
 
 const HomeScreen = () => {
   const [movies, setMovies] = React.useState();
@@ -44,12 +47,15 @@ const HomeScreen = () => {
           data={movies}
           keyExtractor={(item) => item.key}
           horizontal
-          snapToInterval={width / 2}
+          snapToInterval={snap}
           showsHorizontalScrollIndicator={false}
           renderItem={({ item, index }) => {
             return <MovieCard title={item.title} poster={item.poster} />;
           }}
         />
+        <View style={{ paddingHorizontal: 16 }}>
+          <PromoCard />
+        </View>
       </View>
     </>
   );
