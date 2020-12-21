@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Image,
   ImageBackground,
+  ScrollView,
 } from "react-native";
 import MovieCard from "../../components/MovieCard";
 import { getMovies } from "../../api/api";
@@ -30,33 +31,46 @@ const HomeScreen = () => {
   }, [movies]);
   return (
     <>
-      <View
-        style={{ backgroundColor: "#f5f5f5", minHeight: height, width: width }}
-      >
-        <ImageBackground
-          source={require("../../assets/img/bg.png")}
-          style={styles.bgImage}
-        />
-        <View style={styles.header}>
-          <Text style={styles.title}>Playing</Text>
-          <TouchableOpacity>
-            <Text style={{ fontSize: 15, color: "#FECA32" }}>See All </Text>
-          </TouchableOpacity>
-        </View>
-        <FlatList
-          data={movies}
-          keyExtractor={(item) => item.key}
-          horizontal
-          snapToInterval={snap}
-          showsHorizontalScrollIndicator={false}
-          renderItem={({ item, index }) => {
-            return <MovieCard title={item.title} poster={item.poster} />;
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View
+          style={{
+            backgroundColor: "#f5f5f5",
+            minHeight: height,
+            width: width,
           }}
-        />
-        <View style={{ paddingHorizontal: 16 }}>
-          <PromoCard />
+        >
+          <ImageBackground
+            source={require("../../assets/img/bg.png")}
+            style={styles.bgImage}
+          />
+          <View style={styles.header}>
+            <Text style={styles.title}>Playing</Text>
+            <TouchableOpacity>
+              <Text style={{ fontSize: 15, color: "#FECA32" }}>See All </Text>
+            </TouchableOpacity>
+          </View>
+          <FlatList
+            style={{ minHeight: height / 2.5 }}
+            data={movies}
+            keyExtractor={(item) => item.key}
+            horizontal
+            snapToInterval={snap}
+            showsHorizontalScrollIndicator={false}
+            renderItem={({ item, index }) => {
+              return <MovieCard title={item.title} poster={item.poster} />;
+            }}
+          />
+          <View style={{ paddingHorizontal: 16, marginBottom: 40 }}>
+            <PromoCard />
+          </View>
+          <View style={{ paddingHorizontal: 16, marginBottom: 40 }}>
+            <PromoCard />
+          </View>
+          <View style={{ paddingHorizontal: 16, marginBottom: 40 }}>
+            <PromoCard />
+          </View>
         </View>
-      </View>
+      </ScrollView>
     </>
   );
 };
