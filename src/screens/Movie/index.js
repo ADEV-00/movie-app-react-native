@@ -57,7 +57,11 @@ const MovieScreen = () => {
                 alignItems: "center",
               }}
             >
-              <Text style={{ opacity: 0.8 }}>Drama</Text>
+              <View style={{ flexDirection: "row" }}>
+                <Text style={styles.genre}>Drama</Text>
+                <Text style={styles.genre}>Action</Text>
+              </View>
+
               <Text style={{ opacity: 0.8 }}>2h 32m</Text>
             </View>
             <View style={{ marginBottom: 10 }}>
@@ -79,6 +83,15 @@ const MovieScreen = () => {
 };
 
 const styles = StyleSheet.create({
+  genre: {
+    opacity: 0.8,
+    borderColor: "#FECA32",
+    borderWidth: 1,
+    paddingHorizontal: 5,
+    paddingVertical: 3,
+    borderRadius: 4,
+    marginRight: 4,
+  },
   bgWrapper: {
     position: "absolute",
     top: 0,
