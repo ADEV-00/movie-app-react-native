@@ -49,6 +49,28 @@ const MovieScreen = () => {
                 </Text>
               </TouchableOpacity>
             </View>
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                marginBottom: 20,
+                alignItems: "center",
+              }}
+            >
+              <Text style={{ opacity: 0.8 }}>Drama</Text>
+              <Text style={{ opacity: 0.8 }}>2h 32m</Text>
+            </View>
+            <View style={{ marginBottom: 10 }}>
+              <Text style={styles.overview}>
+                After leaving their cave, the Croods encounter their biggest
+                threat since leaving: another family called the Bettermans, who
+                claim and show to be better and evolved. Grug grows suspicious
+                of the Betterman parents, Phil and Hope, as they secretly plan
+                to break up his daughter Eep with her loving boyfriend Guy to
+                ensure that their daughter Dawn has a loving and smart partner
+                to protect her.
+              </Text>
+            </View>
           </View>
         </View>
       </ScrollView>
@@ -89,6 +111,7 @@ const styles = StyleSheet.create({
   detailHeader: {
     flexDirection: "row",
     justifyContent: "space-between",
+    marginBottom: 10,
   },
   btnPlay: {
     width: 62,
