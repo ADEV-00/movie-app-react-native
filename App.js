@@ -3,13 +3,15 @@ import { SafeAreaView } from "react-native";
 import { StyleSheet, Text, View } from "react-native";
 import HomeScreen from "./src/screens/Home";
 import { Provider as MoviesProvider } from "./src/context/MovieContext";
+import MovieScreen from "./src/screens/Movie";
 
 export default function App() {
   return (
     <>
       <MoviesProvider>
         <SafeAreaView>
-          <HomeScreen />
+          {/*  <HomeScreen /> */}
+          <MovieScreen />
         </SafeAreaView>
       </MoviesProvider>
     </>
