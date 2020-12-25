@@ -9,13 +9,23 @@ import {
 } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { FontAwesome, FontAwesome5, AntDesign } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 const { width, height } = Dimensions.get("window");
 
 const MovieScreen = () => {
+  const navigation = useNavigation();
   return (
     <>
       <ScrollView>
+        <View style={styles.nav}>
+          <TouchableOpacity
+            onPress={() => navigation.goBack()}
+            style={styles.btnBack}
+          >
+            <FontAwesome5 name="angle-left" size={30} color="white" />
+          </TouchableOpacity>
+        </View>
         <View
           style={{
             minHeight: height,
@@ -83,6 +93,21 @@ const MovieScreen = () => {
 };
 
 const styles = StyleSheet.create({
+  btnBack: {
+    width: 50,
+    height: 50,
+    justifyContent: "center",
+    alignItems: "center",
+    //backgroundColor: "rgba(202, 202, 202, 0.37)",
+    borderRadius: 50,
+  },
+  nav: {
+    position: "absolute",
+    top: 30,
+    left: 10,
+    right: 0,
+    zIndex: 100,
+  },
   genre: {
     opacity: 0.8,
     borderColor: "#FECA32",
