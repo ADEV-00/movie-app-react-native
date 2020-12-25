@@ -11,13 +11,16 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { FontAwesome, FontAwesome5, AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
-const { width, height } = Dimensions.get("window");
+const { width, height } = Dimensions.get("screen");
 
-const MovieScreen = () => {
+const MovieScreen = ({ route }) => {
   const navigation = useNavigation();
+
+  const { movieTitle, rating, poster, overview } = route.params;
+
   return (
     <>
-      <ScrollView>
+      <ScrollView style={{ minHeight: height }}>
         <View style={styles.nav}>
           <TouchableOpacity
             onPress={() => navigation.goBack()}
@@ -35,7 +38,7 @@ const MovieScreen = () => {
           <View style={styles.bgWrapper}>
             <ImageBackground
               style={{ width: "100%", height: "100%" }}
-              source={require("../../assets/img/tenet.jpg")}
+              source={{ uri: poster }}
             />
           </View>
           <View style={styles.space}></View>
@@ -45,11 +48,11 @@ const MovieScreen = () => {
                 <View>
                   <Text style={styles.rating}>
                     <AntDesign name="star" size={15} color="#FECA32" />
-                    7.8
+                    {rating}
                   </Text>
                 </View>
                 <View>
-                  <Text style={styles.movieTitle}>Tenet</Text>
+                  <Text style={styles.movieTitle}>{movieTitle}</Text>
                 </View>
               </View>
               <TouchableOpacity style={styles.btnPlay}>
@@ -75,15 +78,7 @@ const MovieScreen = () => {
               <Text style={{ opacity: 0.8 }}>2h 32m</Text>
             </View>
             <View style={{ marginBottom: 10 }}>
-              <Text style={styles.overview}>
-                After leaving their cave, the Croods encounter their biggest
-                threat since leaving: another family called the Bettermans, who
-                claim and show to be better and evolved. Grug grows suspicious
-                of the Betterman parents, Phil and Hope, as they secretly plan
-                to break up his daughter Eep with her loving boyfriend Guy to
-                ensure that their daughter Dawn has a loving and smart partner
-                to protect her.
-              </Text>
+              <Text style={styles.overview}>{overview}</Text>
             </View>
           </View>
         </View>

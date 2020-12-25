@@ -62,7 +62,16 @@ const HomeScreen = () => {
             showsHorizontalScrollIndicator={false}
             renderItem={({ item, index }) => {
               return (
-                <Pressable onPress={() => navigation.navigate("Movie")}>
+                <Pressable
+                  onPress={() =>
+                    navigation.navigate("Movie", {
+                      movieTitle: item.title,
+                      poster: item.poster,
+                      overview: item.description,
+                      rating: item.rating,
+                    })
+                  }
+                >
                   <MovieCard title={item.title} poster={item.poster} />
                 </Pressable>
               );
