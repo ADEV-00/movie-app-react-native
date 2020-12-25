@@ -8,11 +8,14 @@ import {
   Image,
   ImageBackground,
   ScrollView,
+  Pressable,
 } from "react-native";
 import MovieCard from "../../components/MovieCard";
 import { getMovies } from "../../api/api";
 import { FlatList } from "react-native-gesture-handler";
 import PromoCard from "../../components/PromoCard";
+import { useNavigation } from "@react-navigation/native";
+import MovieScreen from "../Movie";
 
 const { width, height } = Dimensions.get("window");
 
@@ -20,6 +23,7 @@ const snap = width - 164;
 
 const HomeScreen = () => {
   const [movies, setMovies] = React.useState();
+  const navigation = useNavigation();
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -57,7 +61,11 @@ const HomeScreen = () => {
             snapToInterval={snap}
             showsHorizontalScrollIndicator={false}
             renderItem={({ item, index }) => {
-              return <MovieCard title={item.title} poster={item.poster} />;
+              return (
+                <Pressable onPress={() => navigation.navigate("Movie")}>
+                  <MovieCard title={item.title} poster={item.poster} />
+                </Pressable>
+              );
             }}
           />
           <View style={{ paddingHorizontal: 16, marginBottom: 40 }}>
