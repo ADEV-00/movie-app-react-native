@@ -7,6 +7,7 @@ import {
   Dimensions,
   ScrollView,
   Image,
+  Linking,
 } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { FontAwesome, FontAwesome5, AntDesign } from "@expo/vector-icons";
@@ -61,7 +62,14 @@ const MovieScreen = ({ route }) => {
                   transform: [{ translateY: -60 }, { translateX: -25 }],
                 }}
               >
-                <TouchableOpacity style={styles.btnPlay}>
+                <TouchableOpacity
+                  onPress={() => {
+                    Linking.openURL(
+                      "vnd.youtube://watch?v=iYKXdt0LRs8&ab_channel=TravisScottVEVO"
+                    );
+                  }}
+                  style={styles.btnPlay}
+                >
                   <Text style={{ color: "white" }}>
                     {" "}
                     <FontAwesome5 name="play" size={20} color="white" />{" "}
