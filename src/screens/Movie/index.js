@@ -56,12 +56,18 @@ const MovieScreen = ({ route }) => {
                   <Text style={styles.movieTitle}>{movieTitle}</Text>
                 </View>
               </View>
-              <TouchableOpacity style={styles.btnPlay}>
-                <Text style={{ color: "white" }}>
-                  {" "}
-                  <FontAwesome5 name="play" size={20} color="white" />{" "}
-                </Text>
-              </TouchableOpacity>
+              <View
+                style={{
+                  transform: [{ translateY: -60 }, { translateX: -25 }],
+                }}
+              >
+                <TouchableOpacity style={styles.btnPlay}>
+                  <Text style={{ color: "white" }}>
+                    {" "}
+                    <FontAwesome5 name="play" size={20} color="white" />{" "}
+                  </Text>
+                </TouchableOpacity>
+              </View>
             </View>
             <View
               style={{
@@ -170,7 +176,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.58,
     shadowRadius: 16.0,
     elevation: 24,
-    transform: [{ translateY: -60 }, { translateX: -25 }],
   },
   rating: {
     color: "#FECA32",
