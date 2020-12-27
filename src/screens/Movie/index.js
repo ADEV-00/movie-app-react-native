@@ -6,6 +6,7 @@ import {
   ImageBackground,
   Dimensions,
   ScrollView,
+  Image,
 } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { FontAwesome, FontAwesome5, AntDesign } from "@expo/vector-icons";
@@ -80,6 +81,9 @@ const MovieScreen = ({ route }) => {
             <View style={{ marginBottom: 10 }}>
               <Text style={styles.overview}>{overview}</Text>
             </View>
+            <View>
+              <Image source={{ uri: poster }} style={styles.image} />
+            </View>
           </View>
         </View>
       </ScrollView>
@@ -88,6 +92,11 @@ const MovieScreen = ({ route }) => {
 };
 
 const styles = StyleSheet.create({
+  image: {
+    width: "100%",
+    height: 450,
+    borderRadius: 20,
+  },
   btnBack: {
     width: 50,
     height: 50,
@@ -179,6 +188,9 @@ const styles = StyleSheet.create({
     fontSize: 25,
     color: "#1A2E42",
     maxWidth: "100%",
+  },
+  overview: {
+    marginBottom: 10,
   },
 });
 

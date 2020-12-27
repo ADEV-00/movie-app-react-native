@@ -72,7 +72,12 @@ const HomeScreen = () => {
                     })
                   }
                 >
-                  <MovieCard title={item.title} poster={item.poster} />
+                  <MovieCard
+                    title={item.title}
+                    poster={item.poster}
+                    rating={item.rating}
+                    genres={item.genres}
+                  />
                 </Pressable>
               );
             }}

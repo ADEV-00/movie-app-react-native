@@ -1,7 +1,8 @@
 import React from "react";
 import { View, Text, StyleSheet, ImageBackground } from "react-native";
+import { AntDesign } from "@expo/vector-icons";
 
-const MovieCard = ({ title, poster }) => {
+const MovieCard = ({ title, poster, rating, genres }) => {
   return (
     <View style={styles.cardWrapper}>
       <View style={styles.cardImg}>
@@ -12,8 +13,11 @@ const MovieCard = ({ title, poster }) => {
       </View>
       <View style={styles.cardDetail}>
         <Text style={styles.movieTitle}>{title}</Text>
-        <Text style={styles.movieRating}>6.8</Text>
-        <Text style={styles.movieGenre}>Drama, Action</Text>
+        <Text style={styles.movieRating}>
+          <AntDesign name="star" size={15} color="#FECA32" />
+          {rating}
+        </Text>
+        <Text style={styles.movieGenre}>{genres[0]}</Text>
       </View>
     </View>
   );
@@ -47,6 +51,8 @@ const styles = StyleSheet.create({
   movieTitle: {
     fontSize: 18,
     fontWeight: "bold",
+    width: "100%",
+    height: 25,
     color: "#1A2E42",
     marginBottom: 4,
   },
