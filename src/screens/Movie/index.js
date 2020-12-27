@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -12,13 +12,25 @@ import {
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { FontAwesome, FontAwesome5, AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { getVideoPath } from "../../api/api";
 
 const { width, height } = Dimensions.get("screen");
 
 const MovieScreen = ({ route }) => {
   const navigation = useNavigation();
+  const { movieTitle, rating, poster, overview, id } = route.params;
+  const [path, setPath] = useState();
 
-  const { movieTitle, rating, poster, overview } = route.params;
+  React.useEffect(() => {
+    const fetchData = async () => {
+      const videoID = await id;
+      const path = await getVideoPath(videoID);
+
+      setPath(path);
+    };
+
+    fetchData(path);
+  }, [path]);
 
   return (
     <>
@@ -64,9 +76,7 @@ const MovieScreen = ({ route }) => {
               >
                 <TouchableOpacity
                   onPress={() => {
-                    Linking.openURL(
-                      "vnd.youtube://watch?v=iYKXdt0LRs8&ab_channel=TravisScottVEVO"
-                    );
+                    Linking.openURL(`vnd.youtube://watch?v=${path}`);
                   }}
                   style={styles.btnPlay}
                 >

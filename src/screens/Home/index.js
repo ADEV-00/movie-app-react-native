@@ -69,6 +69,7 @@ const HomeScreen = () => {
                       poster: item.poster,
                       overview: item.description,
                       rating: item.rating,
+                      id: item.key,
                     })
                   }
                 >

@@ -21,6 +21,7 @@ const genres = {
 };
 
 const API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=ccb56df6317a72e3939ac7c5bf8082f8&sort_by=popularity.desc`;
+//const API_VIDEO_URL = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=ccb56df6317a72e3939ac7c5bf8082f8&language=en-US`;
 const getImagePath = (path) =>
   `https://image.tmdb.org/t/p/w440_and_h660_face${path}`;
 const getBackdropPath = (path) =>
@@ -51,4 +52,11 @@ export const getMovies = async () => {
   );
 
   return movies;
+};
+
+export const getVideoPath = async (id) => {
+  const { results } = await fetch(
+    `https://api.themoviedb.org/3/movie/${id}/videos?api_key=ccb56df6317a72e3939ac7c5bf8082f8&language=en-US`
+  ).then((x) => x.json());
+  return results[0].key;
 };
