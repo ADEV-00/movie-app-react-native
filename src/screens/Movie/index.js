@@ -25,10 +25,8 @@ const MovieScreen = ({ route }) => {
     const fetchData = async () => {
       const videoID = await id;
       const path = await getVideoPath(videoID);
-
       setPath(path);
     };
-
     fetchData(path);
   }, [path]);
 
@@ -120,6 +118,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 450,
     borderRadius: 20,
+    marginBottom: 20,
   },
   btnBack: {
     width: 50,
