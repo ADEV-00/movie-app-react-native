@@ -18,7 +18,7 @@ const { width, height } = Dimensions.get("screen");
 
 const MovieScreen = ({ route }) => {
   const navigation = useNavigation();
-  const { movieTitle, rating, poster, overview, id } = route.params;
+  const { movieTitle, rating, poster, overview, id, genres } = route.params;
   const [path, setPath] = useState();
 
   React.useEffect(() => {
@@ -92,12 +92,16 @@ const MovieScreen = ({ route }) => {
                 flexDirection: "row",
                 justifyContent: "space-between",
                 marginBottom: 20,
-                alignItems: "center",
               }}
             >
-              <View style={{ flexDirection: "row" }}>
-                <Text style={styles.genre}>Drama</Text>
-                <Text style={styles.genre}>Action</Text>
+              <View
+                style={{ flexDirection: "row", flexWrap: "wrap", width: "70%" }}
+              >
+                {genres.map((item, key) => (
+                  <Text key={key} style={styles.genre}>
+                    {item}
+                  </Text>
+                ))}
               </View>
 
               <Text style={{ opacity: 0.8 }}>2h 32m</Text>
@@ -145,6 +149,7 @@ const styles = StyleSheet.create({
     paddingVertical: 3,
     borderRadius: 4,
     marginRight: 4,
+    marginBottom: 3,
   },
   bgWrapper: {
     position: "absolute",

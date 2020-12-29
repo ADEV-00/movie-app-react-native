@@ -70,6 +70,7 @@ const HomeScreen = () => {
                       overview: item.description,
                       rating: item.rating,
                       id: item.key,
+                      genres: item.genres,
                     })
                   }
                 >
