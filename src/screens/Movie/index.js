@@ -107,9 +107,11 @@ const MovieScreen = ({ route }) => {
               <Text style={{ opacity: 0.8 }}>2h 32m</Text>
             </View>
             <View style={{ marginBottom: 10 }}>
+              <Text style={styles.detailTitle}>Overview</Text>
               <Text style={styles.overview}>{overview}</Text>
             </View>
             <View>
+              <Text style={styles.detailTitle}>Photos</Text>
               <Image source={{ uri: poster }} style={styles.image} />
             </View>
           </View>
@@ -120,6 +122,11 @@ const MovieScreen = ({ route }) => {
 };
 
 const styles = StyleSheet.create({
+  detailTitle: {
+    color: "#1A2E42",
+    fontSize: 22,
+    marginBottom: 5,
+  },
   image: {
     width: "100%",
     height: 450,
