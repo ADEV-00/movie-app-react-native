@@ -67,23 +67,25 @@ const MovieScreen = ({ route }) => {
                   <Text style={styles.movieTitle}>{movieTitle}</Text>
                 </View>
               </View>
-              <View
-                style={{
-                  transform: [{ translateY: -60 }, { translateX: -25 }],
-                }}
-              >
-                <TouchableOpacity
-                  onPress={() => {
-                    Linking.openURL(`vnd.youtube://watch?v=${path}`);
+              {path ? (
+                <View
+                  style={{
+                    transform: [{ translateY: -60 }, { translateX: -25 }],
                   }}
-                  style={styles.btnPlay}
                 >
-                  <Text style={{ color: "white" }}>
-                    {" "}
-                    <FontAwesome5 name="play" size={20} color="white" />{" "}
-                  </Text>
-                </TouchableOpacity>
-              </View>
+                  <TouchableOpacity
+                    onPress={() => {
+                      Linking.openURL(`vnd.youtube://watch?v=${path}`);
+                    }}
+                    style={styles.btnPlay}
+                  >
+                    <Text style={{ color: "white" }}>
+                      {" "}
+                      <FontAwesome5 name="play" size={20} color="white" />{" "}
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+              ) : null}
             </View>
             <View
               style={{
