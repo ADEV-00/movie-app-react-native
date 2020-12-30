@@ -5,6 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 //Screens
 import HomeScreen from "../screens/Home";
 import MovieScreen from "../screens/Movie";
+import SimilarMovieScreen from "../screens/SimilarMovie";
 
 const Stack = createStackNavigator();
 
@@ -22,6 +23,13 @@ function Navigation() {
         <Stack.Screen
           name="Movie"
           component={MovieScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="SimilarMovie"
+          component={SimilarMovieScreen}
           options={{
             headerShown: false,
           }}

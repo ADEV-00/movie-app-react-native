@@ -20,7 +20,7 @@ import MovieCard from "../../components/MovieCard";
 const { width, height } = Dimensions.get("screen");
 const snap = width - 164;
 
-const MovieScreen = ({ route }) => {
+const SimilarMovieScreen = ({ route }) => {
   const navigation = useNavigation();
   const { movieTitle, rating, poster, overview, id, genres } = route.params;
   const [path, setPath] = useState();
@@ -140,7 +140,7 @@ const MovieScreen = ({ route }) => {
               <FlatList
                 style={{ minHeight: height / 2.5 }}
                 data={movies}
-                keyExtractor={(item) => item.key}
+                keyExtractor={(item) => item.key.toString()}
                 horizontal
                 snapToInterval={snap}
                 showsHorizontalScrollIndicator={false}
@@ -284,4 +284,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MovieScreen;
+export default SimilarMovieScreen;
