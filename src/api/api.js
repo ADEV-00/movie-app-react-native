@@ -60,3 +60,31 @@ export const getVideoPath = async (id) => {
   ).then((x) => x.json());
   return results[0].key;
 };
+
+export const getSimiliarMovies = async (id) => {
+  const { results } = await fetch(
+    `https://api.themoviedb.org/3/movie/${id}/similar?api_key=ccb56df6317a72e3939ac7c5bf8082f8&language=en-US&page=1`
+  ).then((x) => x.json());
+  const movies = results.map(
+    ({
+      id,
+      original_title,
+      poster_path,
+      backdrop_path,
+      vote_average,
+      overview,
+      release_date,
+      genre_ids,
+    }) => ({
+      key: id,
+      title: original_title,
+      poster: getImagePath(poster_path),
+      backdrop: getBackdropPath(backdrop_path),
+      rating: vote_average,
+      description: overview,
+      releaseDate: release_date,
+      genres: genre_ids.map((genre) => genres[genre]),
+    })
+  );
+  return movies;
+};
