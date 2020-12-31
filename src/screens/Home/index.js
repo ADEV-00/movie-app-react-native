@@ -87,12 +87,6 @@ const HomeScreen = () => {
           <View style={{ paddingHorizontal: 16, marginBottom: 40 }}>
             <PromoCard />
           </View>
-          <View style={{ paddingHorizontal: 16, marginBottom: 40 }}>
-            <PromoCard />
-          </View>
-          <View style={{ paddingHorizontal: 16, marginBottom: 40 }}>
-            <PromoCard />
-          </View>
         </View>
       </ScrollView>
     </>

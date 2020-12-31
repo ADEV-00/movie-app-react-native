@@ -16,6 +16,7 @@ import { FlatList } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
 import { getVideoPath, getSimiliarMovies } from "../../api/api";
 import MovieCard from "../../components/MovieCard";
+import Loading from "../../components/Loading";
 
 const { width, height } = Dimensions.get("screen");
 const snap = width - 164;
@@ -25,6 +26,7 @@ const MovieScreen = ({ route }) => {
   const { movieTitle, rating, poster, overview, id, genres } = route.params;
   const [path, setPath] = useState();
   const [movies, setMovies] = useState();
+  const test = true;
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -36,6 +38,10 @@ const MovieScreen = ({ route }) => {
     };
     fetchData(path, movies);
   }, [path, movies]);
+
+  if (!movies || !path) {
+    return <Loading />;
+  }
 
   return (
     <>
