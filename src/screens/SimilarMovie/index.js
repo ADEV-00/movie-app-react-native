@@ -16,6 +16,7 @@ import { FlatList } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
 import { getVideoPath, getSimiliarMovies } from "../../api/api";
 import MovieCard from "../../components/MovieCard";
+import Loading from "../../components/Loading";
 
 const { width, height } = Dimensions.get("screen");
 const snap = width - 164;
@@ -36,6 +37,10 @@ const SimilarMovieScreen = ({ route }) => {
     };
     fetchData(path, movies);
   }, [path, movies]);
+
+  if (!movies || !path) {
+    return <Loading />;
+  }
 
   return (
     <>
