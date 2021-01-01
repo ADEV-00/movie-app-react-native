@@ -11,7 +11,7 @@ import {
   Pressable,
 } from "react-native";
 import MovieCard from "../../components/MovieCard";
-import { getMovies } from "../../api/api";
+import { getMovies, getMoviesByGenres } from "../../api/api";
 import { FlatList } from "react-native-gesture-handler";
 import PromoCard from "../../components/PromoCard";
 import { useNavigation } from "@react-navigation/native";
@@ -23,16 +23,20 @@ const snap = width - 164;
 
 const HomeScreen = () => {
   const [movies, setMovies] = React.useState();
+  const [actionMovies, setActionMovies] = React.useState();
   const navigation = useNavigation();
 
   React.useEffect(() => {
     const fetchData = async () => {
       const movies = await getMovies();
       setMovies(movies);
+      const actionMovies = await getMoviesByGenres(28);
+      setActionMovies(actionMovies);
     };
 
-    fetchData(movies);
-  }, [movies]);
+    fetchData(movies, actionMovies);
+  }, [movies, actionMovies]);
+
   return (
     <>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -87,6 +91,40 @@ const HomeScreen = () => {
           <View style={{ paddingHorizontal: 16, marginBottom: 40 }}>
             <PromoCard />
           </View>
+          <View style={{ paddingHorizontal: 16, marginBottom: 20 }}>
+            <Text style={styles.title}>Action</Text>
+          </View>
+          <FlatList
+            style={{ minHeight: height / 2.5 }}
+            data={actionMovies}
+            keyExtractor={(item) => item.key}
+            horizontal
+            snapToInterval={snap}
+            showsHorizontalScrollIndicator={false}
+            renderItem={({ item, index }) => {
+              return (
+                <Pressable
+                  onPress={() =>
+                    navigation.navigate("Movie", {
+                      movieTitle: item.title,
+                      poster: item.poster,
+                      overview: item.description,
+                      rating: item.rating,
+                      id: item.key,
+                      genres: item.genres,
+                    })
+                  }
+                >
+                  <MovieCard
+                    title={item.title}
+                    poster={item.poster}
+                    rating={item.rating}
+                    genres={item.genres}
+                  />
+                </Pressable>
+              );
+            }}
+          />
         </View>
       </ScrollView>
     </>
