@@ -16,6 +16,7 @@ import { FlatList } from "react-native-gesture-handler";
 import PromoCard from "../../components/PromoCard";
 import { useNavigation } from "@react-navigation/native";
 import MovieScreen from "../Movie";
+import Navbar from "../../components/Navbar";
 
 const { width, height } = Dimensions.get("window");
 
@@ -39,7 +40,11 @@ const HomeScreen = () => {
 
   return (
     <>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        style={{ position: "relative" }}
+      >
+        <Navbar />
         <View
           style={{
             backgroundColor: "#f5f5f5",
