@@ -6,7 +6,7 @@ const Navbar = () => {
     <>
       <View style={styles.navbarWrapper}>
         <Text style={{ fontSize: 20, fontWeight: "bold", color: "orange" }}>
-          Cinestar
+          Movie App
         </Text>
       </View>
     </>
@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 10,
     justifyContent: "center",
     alignItems: "center",
+    paddingTop: 20,
   },
 });
 

@@ -39,10 +39,6 @@ const MovieScreen = ({ route }) => {
     fetchData(path, movies);
   }, [path, movies]);
 
-  if (!movies || !path) {
-    return <Loading />;
-  }
-
   return (
     <>
       <ScrollView style={{ minHeight: height }}>
@@ -91,21 +87,27 @@ const MovieScreen = ({ route }) => {
                       transform: [{ translateY: -60 }, { translateX: -25 }],
                     }}
                   >
-                    <TouchableOpacity
-                      onPress={() => {
-                        Linking.openURL(`vnd.youtube://watch?v=${path}`);
-                      }}
-                      style={styles.btnPlay}
-                    >
-                      <Text style={{ color: "white" }}>
-                        {" "}
-                        <FontAwesome5
-                          name="play"
-                          size={20}
-                          color="white"
-                        />{" "}
-                      </Text>
-                    </TouchableOpacity>
+                    {path ? (
+                      <TouchableOpacity
+                        onPress={() => {
+                          Linking.openURL(`vnd.youtube://watch?v=${path}`);
+                        }}
+                        style={styles.btnPlay}
+                      >
+                        <Text style={{ color: "white" }}>
+                          {" "}
+                          <FontAwesome5
+                            name="play"
+                            size={20}
+                            color="white"
+                          />{" "}
+                        </Text>
+                      </TouchableOpacity>
+                    ) : (
+                      <View style={styles.btnPlay}>
+                        <Text style={{ color: "white" }}>Loading...</Text>
+                      </View>
+                    )}
                   </View>
                 ) : null}
               </View>
