@@ -1,4 +1,6 @@
-const API_KEY = "ccb56df6317a72e3939ac7c5bf8082f8";
+//Your API key from https://www.themoviedb.org/
+const API_KEY = "";
+
 const genres = {
   12: "Adventure",
   14: "Fantasy",
@@ -21,7 +23,7 @@ const genres = {
   10770: "TV Movie",
 };
 //Most popular movies
-const API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=ccb56df6317a72e3939ac7c5bf8082f8&sort_by=popularity.desc`;
+const API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc`;
 
 //Handle movie image
 const getImagePath = (path) =>
@@ -58,14 +60,14 @@ export const getMovies = async () => {
 
 export const getVideoPath = async (id) => {
   const { results } = await fetch(
-    `https://api.themoviedb.org/3/movie/${id}/videos?api_key=ccb56df6317a72e3939ac7c5bf8082f8&language=en-US`
+    `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}&language=en-US`
   ).then((x) => x.json());
   return results[0].key;
 };
 
 export const getSimiliarMovies = async (id) => {
   const { results } = await fetch(
-    `https://api.themoviedb.org/3/movie/${id}/similar?api_key=ccb56df6317a72e3939ac7c5bf8082f8&language=en-US&page=1`
+    `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${API_KEY}&language=en-US&page=1`
   ).then((x) => x.json());
   const movies = results.map(
     ({
