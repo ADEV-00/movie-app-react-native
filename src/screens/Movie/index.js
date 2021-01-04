@@ -156,7 +156,7 @@ const MovieScreen = ({ route }) => {
                   return (
                     <Pressable
                       onPress={() =>
-                        navigation.navigate("SimilarMovie", {
+                        navigation.navigate("Movie", {
                           movieTitle: item.title,
                           poster: item.poster,
                           overview: item.description,
